@@ -11,11 +11,14 @@ from tkinter import ttk
 COLOR_BUTTON = "#7984EE"
 COLOR_PROGRESS = "#FF6464"
 COLOR_TEXT_BUTTON = "#FFFFFF"
+COLOR_BLACK = "#000000"
+FONT_TEXT = 'arial'
+FONT_SIZE_BTN = 14
 
 
 def selecionado(event,textnome):
     textnome.delete(0,'end')
-    textnome.config(fg='black')
+    textnome.config(fg=COLOR_BLACK)
 
 def deselecionado(event,textnome):
     if textnome.get()=="":
@@ -133,18 +136,18 @@ screen = Tk()
 screen.title("Download De Vídeos MP4 e MP3")
 screen.geometry("700x500")
 screen.resizable(False, False) 
-screen['bg'] = "#000000"
+screen['bg'] = COLOR_BLACK
 screen.iconphoto(True, PhotoImage(file='./images/icon.png'))
 
 image=PhotoImage(file='./images/musica-yt.png')
 
-campointervalo = Label(screen, width=700, height=500, image=image, bd=3, fg='black',bg = 'black', font=('arial',10,'bold'))
+campointervalo = Label(screen, width=700, height=500, image=image, bd=3, fg=COLOR_BLACK,bg = COLOR_BLACK, font=(FONT_TEXT,10,'bold'))
 campointervalo.grid(rowspan=10,columnspan =5)
 
-lblLink = Label(screen, height=1, width=15, foreground=COLOR_TEXT_BUTTON, bg=COLOR_BUTTON, text = "YouTube link: ",font=('arial',14, 'bold'))
+lblLink = Label(screen, height=1, width=15, foreground=COLOR_TEXT_BUTTON, bg=COLOR_BUTTON, text = "YouTube link: ",font=(FONT_TEXT,14, 'bold'))
 lblLink.place(relx = 0.03, rely = 0.1)
 
-txtLink = Entry(screen,width=40,justify='left',fg='black', font=('arial',14))
+txtLink = Entry(screen,width=40,justify='left',fg=COLOR_BLACK, font=(FONT_TEXT,14))
 txtLink.place(relx=0.3, rely=0.1)
 txtLink.insert(0,'Entre com o link')
 txtLink.bind('<FocusIn>', lambda event=txtLink, btn=txtLink: selecionado(event,btn))
@@ -153,16 +156,16 @@ txtLink.bind('<FocusOut>', lambda event=txtLink, btn=txtLink: deselecionado(even
 
 
 
-btinicio = Button(screen, width=15, text = " Baixar MP4  ", foreground=COLOR_TEXT_BUTTON, bg=COLOR_BUTTON, font=('arial',14,'bold'),command=lambda: progresso('mp4'))
+btinicio = Button(screen, width=15, text = " Baixar MP4  ", foreground=COLOR_TEXT_BUTTON, bg=COLOR_BUTTON, font=(FONT_TEXT,FONT_SIZE_BTN,'bold'),command=lambda: progresso('mp4'))
 btinicio.place(relx = 0.03, rely = 0.3)
 
-btimusica = Button(screen, width=15, text = " Baixar MP3  ", foreground=COLOR_TEXT_BUTTON, bg=COLOR_BUTTON, font=('arial',14,'bold'),command=lambda: progresso('mp3'))
+btimusica = Button(screen, width=15, text = " Baixar MP3  ", foreground=COLOR_TEXT_BUTTON, bg=COLOR_BUTTON, font=(FONT_TEXT,FONT_SIZE_BTN,'bold'),command=lambda: progresso('mp3'))
 btimusica.place(relx = 0.03, rely = 0.4)
 
-btilimpa = Button(screen, width=15, text = " Limpar  ", foreground=COLOR_TEXT_BUTTON, bg=COLOR_BUTTON, font=('arial',14,'bold'),command=limpar)
+btilimpa = Button(screen, width=15, text = " Limpar  ", foreground=COLOR_TEXT_BUTTON, bg=COLOR_BUTTON, font=(FONT_TEXT,FONT_SIZE_BTN,'bold'),command=limpar)
 btilimpa.place(relx = 0.03, rely = 0.5)
 
-btsair = Button(screen, width=15, text = "   Sair   ",foreground=COLOR_TEXT_BUTTON, bg=COLOR_BUTTON, font=('arial',14,'bold'),command=saindo)
+btsair = Button(screen, width=15, text = "   Sair   ",foreground=COLOR_TEXT_BUTTON, bg=COLOR_BUTTON, font=(FONT_TEXT,FONT_SIZE_BTN,'bold'),command=saindo)
 btsair.place(relx = 0.03, rely = 0.8)
 
 #Progressbar 
